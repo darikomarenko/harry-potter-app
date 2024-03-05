@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Filter from '../src/components/Filter';
+import CardList from '../src/components/CardList';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addCard } from './store/actions';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch('https://potterapi-fedeperin.vercel.app/es/characters')
+      .then((data) => {
+        const cards = data.cards.map((card) => ({
+          id: card.id,
+          name: card.name,
+          nickname: card.nickname,
+          image: card.image,
+          house: card.hogwartsHouse,
+          hasLike: false,
+        }));
+        cards.forEach((card) => dispatch(addCard(card)));
+        loading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        loading(false);
+      });
+  }, [dispatch]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header>
+        <h1>Harry Potter Cards</h1>
+        <Filter />
+      </header>
+      <div>{loading ? <p>Loading...</p> : <CardList />}</div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
