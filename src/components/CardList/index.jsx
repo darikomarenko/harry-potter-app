@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import Card from '../Card/Card';
+import Card from '../Card/index';
 
 function CardList() {
   const cards = useSelector((state) => {
