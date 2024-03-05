@@ -9,13 +9,13 @@ function Filter() {
 
   const handleFilterButtonClick = () => {
     setHasLike(!hasLike);
-    dispatch(setFilter(hasLike ? 'all' : 'liked'));
+    dispatch(setFilter(hasLike ? 'all' : 'hasLike'));
   };
 
   return (
-    <div className={styles['filter']}>
-      <button onClick={handleFilterButtonClick}>{hasLike ? 'All' : 'Liked'}</button>
-    </div>
+    <button className={styles['filter-button']} onClick={handleFilterButtonClick}>
+      {hasLike ? 'All' : 'Liked'}
+    </button>
   );
 }
 

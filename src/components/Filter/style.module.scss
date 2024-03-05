@@ -1,15 +1,14 @@
-.filter button {
+.filter-button {
   width: 150px;
   padding: 10px;
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: bold;
-  background-image: linear-gradient(45deg, rgba(255, 213, 0, 0.692), rgba(170, 196, 215, 0.812));
+  color: aliceblue;
+  background: linear-gradient(to right, #6f0000, #200122);
   border-radius: 10px;
   cursor: pointer;
-}
-
-.filter button:hover {
-  background-image: linear-gradient(45deg, rgba(170, 196, 215, 0.812), rgba(255, 213, 0, 0.692));
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.444);
+  &:hover {
+    color: yellow;
+  }
 }

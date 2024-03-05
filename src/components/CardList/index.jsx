@@ -5,14 +5,13 @@ import styles from './style.module.scss';
 function CardList() {
   const cards = useSelector((state) => {
     if (state.filter === 'hasLike') {
-      return state.cards.filter((card) => card.isLiked);
+      return state.cards.filter((card) => card.hasLike);
     } else {
       return state.cards;
     }
   });
-  console.log(cards);
   return (
-    <div className={styles['card-list']}>
+    <div className={styles['card__list']}>
       {cards.map((card) => (
         <Card key={card.name} card={card} />
       ))}

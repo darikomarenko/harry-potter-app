@@ -1,14 +1,9 @@
-import { combineReducers } from "redux";
-import {
-  ADD_CARD,
-  REMOVE_CARD,
-  TOGGLE_LIKE,
-  SET_FILTER
-} from "./actions";
+import { combineReducers } from 'redux';
+import { ADD_CARD, REMOVE_CARD, TOGGLE_LIKE, SET_FILTER } from './actions';
 
 const initialState = {
   cards: [],
-  filter: "all"
+  filter: 'all',
 };
 
 function cards(state = initialState.cards, action) {
@@ -16,12 +11,10 @@ function cards(state = initialState.cards, action) {
     case ADD_CARD:
       return [...state, action.card];
     case REMOVE_CARD:
-      return state.filter((card) => card.id !== action.id);
+      return state.filter((card) => card.name !== action.name);
     case TOGGLE_LIKE:
       return state.map((card) =>
-        card.id === action.id
-          ? { ...card, hasLike: !card.hasLike }
-          : card
+        card.name === action.name ? { ...card, hasLike: !card.hasLike } : card,
       );
     default:
       return state;

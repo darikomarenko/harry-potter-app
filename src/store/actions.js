@@ -7,12 +7,12 @@ export function addCard(card) {
   return { type: ADD_CARD, card };
 }
 
-export function removeCard(id) {
-  return { type: REMOVE_CARD, id };
+export function removeCard(name) {
+  return { type: REMOVE_CARD, name };
 }
 
-export function toggleLike(id) {
-  return { type: TOGGLE_LIKE, id };
+export function toggleLike(name) {
+  return { type: TOGGLE_LIKE, name };
 }
 
 export function setFilter(filter) {
