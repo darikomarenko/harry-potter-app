@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import Card from '../Card/index';
+import styles from './style.module.scss';
 
 function CardList() {
   const cards = useSelector((state) => {
@@ -9,11 +10,11 @@ function CardList() {
       return state.cards;
     }
   });
-
+  console.log(cards);
   return (
-    <div className="card-list">
+    <div className={styles['card-list']}>
       {cards.map((card) => (
-        <Card key={card.id} card={card} />
+        <Card key={card.name} card={card} />
       ))}
     </div>
   );

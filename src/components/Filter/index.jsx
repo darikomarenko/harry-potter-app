@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../../store/actions';
+import styles from './style.module.scss';
 
 function Filter() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function Filter() {
   };
 
   return (
-    <div className="filter">
+    <div className={styles['filter']}>
       <button onClick={handleFilterButtonClick}>{hasLike ? 'All' : 'Liked'}</button>
     </div>
   );

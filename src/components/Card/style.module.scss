@@ -1,0 +1,48 @@
+.card {
+  width: 250px;
+  margin-bottom: 20px;
+  border: black;
+  border-radius: 10px;
+  background: #200122; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6f0000, #200122); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #6f0000,
+    #200122
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  padding: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.682);
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.card h3 {
+  margin: 10px;
+  color: aliceblue;
+}
+
+.card button:hover {
+  color: white;
+}
+
+.card button:last-of-type {
+  margin-right: 0;
+}
+
+.liked {
+  color: red;
+}
+
+p {
+  font-size: 30px;
+}

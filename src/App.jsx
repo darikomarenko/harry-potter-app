@@ -11,28 +11,29 @@ function App() {
   useEffect(() => {
     setLoading(true);
     fetch('https://potterapi-fedeperin.vercel.app/es/characters')
+      .then((response) => response.json())
       .then((data) => {
-        const cards = data.cards.map((card) => ({
-          id: card.id,
-          name: card.name,
+        const cards = data.map((card) => ({
+          name: card.fullName,
           nickname: card.nickname,
           image: card.image,
           house: card.hogwartsHouse,
           hasLike: false,
         }));
+        console.log(cards);
         cards.forEach((card) => dispatch(addCard(card)));
-        loading(false);
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-        loading(false);
+        setLoading(false);
       });
   }, [dispatch]);
 
   return (
     <>
       <header>
-        <h1>Harry Potter Cards</h1>
+        <h1>Harry Potter Characters</h1>
         <Filter />
       </header>
       <div>{loading ? <p>Loading...</p> : <CardList />}</div>
